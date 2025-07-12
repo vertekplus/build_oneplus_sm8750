@@ -67,7 +67,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: 📊 Check disk space
+      - name: 📊 Pre-build disk space check
         run: |
           echo "Disk space before building: "
           df -h
@@ -180,10 +180,10 @@ jobs:
               ccache -M "$CCACHE_MAXSIZE"
               touch "$INIT_FLAG"
             else
-              echo "ccache 已初始化，跳过"
+              echo "ccache has been initialized, skipping"
             fi
           else
-            echo "未安装 ccache，跳过"
+            echo "ccache is not installed, skipping"
           fi
 
 
@@ -193,7 +193,7 @@ jobs:
          chmod a+x ~/repo
          sudo mv ~/repo /usr/local/bin/repo
 
-      - name: 📥 Initialize repo and sync
+      - name: 📥 Init repo and sync
         run: |
          mkdir kernel_workspace && cd kernel_workspace
          repo init -u https://github.com/showdo/kernel_manifest.git -b refs/heads/oneplus/sm8750 -m ${REPO_MANIFEST}.xml --depth=1
@@ -244,7 +244,7 @@ jobs:
            patch -p1 -F 3 < syscall_hooks.patch
 
            
-           echo "完成"
+           echo "Finished"
 
       - name: 🔧 Cache HMBird patch
         uses: actions/cache@v3
@@ -443,7 +443,7 @@ jobs:
          name: AK3_KPM_${{ env.KSUVER }}_${{ env.DEVICES_NAME }}_SuKiSU
          path: ./AnyKernel3/*
          
-      - name: 📊 Post-build disk check (Post-build space check)
+      - name: 📊 Post-build disk space check
         run: |
-          echo "Disk space after build: "
+          echo "Disk space after building: "
           df -h
