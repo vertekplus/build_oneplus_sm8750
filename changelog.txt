@@ -1,3 +1,5 @@
+2025-07-13-23:07
+1️⃣Change the display method of SukiSU version number
 2025-07-05-09:00
 1️⃣Customize BBR algorithm (recommend to close)
 2025-07-04-21:00
