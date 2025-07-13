@@ -1,0 +1,67 @@
+2025-07-05-09:00
+1️⃣Customize BBR algorithm (recommend to close)
+2025-07-04-21:00
+1️⃣Fix the bug that lz4kd is not enabled
+2025-07-01-20:35
+1️⃣Modify some implementations
+Another announcement:
+SukiSU's latest version adds the function of hiding the application list
+Details: This function can realize a void app similar to hma data
+But it still cannot prevent pm-like instruction acquisition
+2025-06-30-22:07
+1️⃣Workflow removes invalid execution of lz4+zstd update and replaces it with lz4kd algorithm
+2025-06-29-15:26
+1️⃣Workflow adds compilation of real GT7Pro and real GT7Pro Racing Edition
+2025-06-27-23:30
+1️⃣Workflow adds compilation of OnePlus Ace5 Supreme
+2025-06-27-22:00
+1️⃣Workflow + local SH replaces susfs-main branch
+2025-06-26-20:00
+1️⃣Workflow changes:
+KPM switch changed to 'Generate AK3 without KPM - If unchecked, only AK3 with KPM will be generated.
+Two AK3 packages (patched KPM and unpatched KPM) will be generated after checking.
+If unchecked, only the package with patched KPM will be output by default.
+2️⃣Local SH changes:
+Automatically select the original build name and time according to the model
+Fix the bug that the option is true anyway (suggested by @LaoSparrow)
+2025-06-25-20:25
+1️⃣Workflow changes:
+Optimize the script to add automatic selection of the original build name + time
+If you need to customize the name or build time, you need to uncheck and write the corresponding content
+Tips: If you only want to change the name, leave the build time blank
+2025-06-24-17:35
+1️⃣Replace SuKiSU's curl execution to solve the KSU_VERSION problem
+2025-06-24-13:54
+1️⃣Optimize and clean up Workflow script
+(remove manual input of user name/warehouse and change to automatic acquisition)
+2025-06-24-0:04
+1️⃣Really fix the problem that the compilation time cannot be shortened due to failure to hit Ccache during compilation
+2️⃣Add multiple caches to optimize script running time
+(Now the total time taken for the script to run to the end will be <8min)
+2025-6-23-22:13
+1️⃣Try to fix the problem that the compilation time cannot be shortened due to failure to hit Ccache during compilation
+2️⃣Local SH script restores kernel name
+2025-06-22-19:05
+1️⃣Cloud workflow optimization:
+Merge all workflows, simplify code and optimize code execution rate
+Ccache optimization (keep cache by model)
+2️⃣Local SH script: Same as cloud workflow
+2025-06-18-21:26
+1️⃣Local SH script adds OnePlus Pad 2 Pro compilation
+2️⃣SH script adds BBR algorithm (TCP congestion control algorithm)
+3️⃣HMBird GKI patch is converted to cloud download injection
+2025-06-18-15:25
+1️⃣BBR algorithm is added to the workflow
+2️⃣The black screen is fixed when OnePlus pad2pro is refreshed
+2025-06-16-16:00
+1️⃣Workflow compilation is added (supports OnePlus tablet 2pro)
+2025-06-15-23:10
+1️⃣Optimize build command parameters
+2025-06-15-20:11
+1️⃣Fix the BUG of clearing the working directory and leaving residuals
+2025-06-15-04:11
+1️⃣Remove the compilation parameter all and change it to Image
+(Only compile the Image kernel file, which greatly reduces the compilation time)
+2025-06-14-22:48
+1️⃣Add the perfect wind patch
+2️⃣13T enables -O2 compilation
