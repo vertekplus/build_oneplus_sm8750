@@ -204,18 +204,23 @@ jobs:
       - name: ⚙️ Set SuKiSU Ultra
         run: |
             mkdir -p kernel_workspace/kernel_platform
-              cd kernel_workspace/kernel_platform
-              curl -LSs "https://raw.githubusercontent.com/SukiSU-Ultra/SukiSU-Ultra/susfs-main/kernel/setup.sh" | bash -s susfs-main
-              cd KernelSU
-              cp "${GITHUB_WORKSPACE}/.github/workflows/setup.bin" ./
-              chmod +x setup.bin
-              if [ ! -f "kernel/Makefile" ]; then
-                echo "::error ::kernel/Makefile"
-                ls -la
-                exit 1
-              fi
-              ./setup.bin
-      - name: 🔧 Set up SuSFS
+            cd kernel_workspace/kernel_platform
+            
+            curl -LSs "https://raw.githubusercontent.com/SukiSU-Ultra/SukiSU-Ultra/susfs-main/kernel/setup.sh" -o setup.sh && bash setup.sh susfs-main
+            
+            cd KernelSU
+            KSU_VERSION=$(expr $(/usr/bin/git rev-list --count main) "+" 10700)
+            echo "KSUVER=$KSU_VERSION" >> $GITHUB_ENV
+            cp "${GITHUB_WORKSPACE}/.github/workflows/setup.bin" ./
+            chmod +x setup.bin
+            
+            if [ ! -f "kernel/Makefile" ]; then
+              echo "::error ::kernel/Makefile not found"
+              ls -la
+              exit 1
+            fi
+            ./setup.bin
+      - name: 🔧 Set up SUSFS
         run: |
            cd kernel_workspace
            git clone https://gitlab.com/simonpunk/susfs4ksu.git -b gki-android15-6.6
@@ -285,7 +290,6 @@ jobs:
         run: |
           cd kernel_workspace/kernel_platform
           echo "CONFIG_KSU=y" >> ./common/arch/arm64/configs/gki_defconfig
-
           # Add VFS configuration settings
           echo "CONFIG_KSU_SUSFS_SUS_SU=n" >> ./common/arch/arm64/configs/gki_defconfig
           echo "CONFIG_KSU_MANUAL_HOOK=y" >> ./common/arch/arm64/configs/gki_defconfig
@@ -315,7 +319,6 @@ jobs:
           echo "CONFIG_KSU_SUSFS_HIDE_KSU_SUSFS_SYMBOLS=y" >> ./common/arch/arm64/configs/gki_defconfig
           echo "CONFIG_KSU_SUSFS_SPOOF_CMDLINE_OR_BOOTCONFIG=y" >> ./common/arch/arm64/configs/gki_defconfig
           echo "CONFIG_KSU_SUSFS_OPEN_REDIRECT=y" >> ./common/arch/arm64/configs/gki_defconfig
-
           # Add BBR
           if [ "$ENABLE_B" = "true" ]; then
             echo "CONFIG_TCP_CONG_ADVANCED=y" >> ./common/arch/arm64/configs/gki_defconfig
