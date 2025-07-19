@@ -1,14 +1,20 @@
+2025-07-16-21:13
+1️⃣Local SH script synchronizes cloud workflow
+2️⃣Local SH script:
+Synchronize workflow model
+Change selection judgment (ensure 100% correct judgment)
+Add BBR self-selection
 2025-07-13-23:07
-1️⃣Change the display method of SukiSU version number
+1️⃣Workflow: Change the display method of SukiSU version number
 2025-07-05-09:00
-1️⃣Customize BBR algorithm (recommend to close)
+1️⃣Workflow: Customize BBR algorithm (recommend closed)
 2025-07-04-21:00
-1️⃣Fix the bug that lz4kd is not enabled
+1️⃣Workflow: Fix the bug that lz4kd is not enabled
 2025-07-01-20:35
 1️⃣Modify some implementations
 Another announcement:
-SukiSU's latest version adds the function of hiding the application list
-Details: This function can realize a void app similar to hma data
+The latest version of SukiSU has added the function of hiding the application list
+Details: This function can realize void app similar to hma data
 But it still cannot prevent pm-like instruction acquisition
 2025-06-30-22:07
 1️⃣Workflow removes invalid execution of lz4+zstd update and replaces it with lz4kd algorithm
