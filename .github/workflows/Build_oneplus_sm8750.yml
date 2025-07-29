@@ -93,9 +93,14 @@ jobs:
       - name: ⚙️ Set KERNEL_TIME
         id: set_kernel_time
         run: |
-          export KERNEL_TIME="$(date -u '+%a %b %d %T UTC %Y')"
-          echo "Using current time: $KERNEL_TIME"
-          echo "KERNEL_TIME=$KERNEL_TIME" >> $GITHUB_ENV
+          if [ "$KEEP_ORIGINAL" = "false" ] && [ -n "$CUSTOM_TIME" ]; then
+            echo "Using custom build time: $CUSTOM_TIME"
+            echo "KERNEL_TIME=$CUSTOM_TIME" >> $GITHUB_ENV
+          else
+            CURRENT_TIME="$(date -u '+%a %b %d %T UTC %Y')"
+            echo "Using current UTC time: $CURRENT_TIME"
+            echo "KERNEL_TIME=$CURRENT_TIME" >> $GITHUB_ENV
+          fi
 
       - name: ⚙️ Set device-specific CCACHE_DIR
         run: |
