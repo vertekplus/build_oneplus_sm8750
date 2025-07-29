@@ -1,3 +1,7 @@
+2025-07-29
+Use real KERNEL_TIME if no custom one is set
+2025-07-28
+Use kernel sources from brokestar233
 2025-07-16-21:13
 1️⃣Local SH script synchronizes cloud workflow
 2️⃣Local SH script:
