@@ -93,25 +93,9 @@ jobs:
       - name: ⚙️ Set KERNEL_TIME
         id: set_kernel_time
         run: |
-          if [ "$KEEP_ORIGINAL" = "false" ] && [ -n "$CUSTOM_TIME" ]; then
-            echo "Use custom build time: $CUSTOM_TIME"
-            echo "KERNEL_TIME=$CUSTOM_TIME" >> $GITHUB_ENV
-          else
-            case "$DEVICES_NAME" in
-              oneplus_13 | oneplus_ace5_pro | realme_GT7pro | realme_GT7pro_Speed)
-                echo 'KERNEL_TIME=Tue Dec 17 23:36:49 UTC 2024' >> $GITHUB_ENV
-                ;;
-              oneplus_13t)
-                echo 'KERNEL_TIME=FriApr 25 01:56:53 UTC 2025' >> $GITHUB_ENV
-                ;;
-              oneplus_pad_2_pro)
-                echo 'KERNEL_TIME=Wed Dec 11 19:16:38 UTC 2024' >> $GITHUB_ENV
-                ;;
-              oneplus_ace5_ultra)
-                echo 'KERNEL_TIME=Fri Apr 18 19:35:07 UTC 2025' >> $GITHUB_ENV
-                ;;
-            esac
-          fi
+          export KERNEL_TIME="$(date -u '+%a %b %d %T UTC %Y')"
+          echo "Using current time: $KERNEL_TIME"
+          echo "KERNEL_TIME=$KERNEL_TIME" >> $GITHUB_ENV
 
       - name: ⚙️ Set device-specific CCACHE_DIR
         run: |
